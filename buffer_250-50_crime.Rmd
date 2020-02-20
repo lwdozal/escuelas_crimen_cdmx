@@ -2,7 +2,9 @@
 title: "crimenes_250_50m"
 author: "Laura.w"
 date: "2/20/2020"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -10,10 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
-suppressPackageStartupMessages(install.packages("tidyr"))
-suppressPackageStartupMessages(install.packages("ggplot2"))
-suppressPackageStartupMessages(install.packages("readxl"))
-suppressPackageStartupMessages(install.packages("readxlsb"))
+
 
 ```
 ```{r}
