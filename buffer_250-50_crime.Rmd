@@ -1,0 +1,148 @@
+---
+title: "crimenes_250_50m"
+author: "Laura.w"
+date: "2/20/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+suppressPackageStartupMessages(install.packages("tidyr"))
+suppressPackageStartupMessages(install.packages("ggplot2"))
+suppressPackageStartupMessages(install.packages("readxl"))
+suppressPackageStartupMessages(install.packages("readxlsb"))
+
+```
+```{r}
+library(readxl)
+library(readr)
+
+data_250 <- read_xlsx('C://Users//LW//Box//Mexico City 2020//data//buffer_250_crime1_TableToExcel.xlsx')
+
+data_250
+```
+
+
+##Crimes within a 250m radius
+
+Summary of crimes within a 250 radius of any school
+```{r}
+data(data_250, package = "DMwR2")
+summary(data_250)
+summary(data_250$Join_Count)
+```
+###We can review the vairance, standard deviation, and inter-quartile ranges:
+```{r}
+#variance
+var(data_250$Join_Count)
+
+#standard deviation
+sd(data_250$Join_Count)
+
+#inter-quartile range
+quantile(data_250$Join_Count)
+
+
+quantile(data_250$Join_Count, probs=c(0.2, 0.8))
+```
+
+## Joint Count Distribution
+
+Our histogram is skewed to the lower end of the crime numbers, with most areas experiencing under 150 crimes.
+
+When we look at the bandwith a little closer we can see that most areas with a 250 radius aruond a school have between 25 and 75 crimes on average, with 50 crimes 
+```{r}
+
+library(ggplot2)
+
+hist(data_250$Join_Count)
+
+ggplot(data_250) +
+    geom_histogram(aes(x = data_250$Join_Count),
+                   binwidth = 25, fill = "blue", color = "black")
+```
+
+And look at the frequency of crimes
+```{r}
+freq <- table(data_250$Join_Count)
+barplot(freq, main="Frequency of crimes within a 250m radius")
+```
+
+```{r}
+boxplot(data_250$Join_Count)
+
+
+```
+
+```{r}
+
+
+```
+
+```{r}
+ggplot(data_250, aes(x=delito, y=Join_Count)) + geom_point()+ggtitle("Relationship crime and count")
+
+
+```
+
+```{r}
+freq <- table(data_250$delito)
+barplot(freq, main="Frequency of crimes within a 50m radius")
+```
+
+
+
+
+```{r}
+library(readxl)
+table(data_250$Join_Count, data_250$nombre)
+
+```
+
+```{r}
+library(dplyr)
+
+missing.value.rows <- filter(data_250, !complete.cases(data_250)) 
+missing.value.rows
+
+
+apply(data_250, 1, function(x) sum(is.na(x)))
+
+sort(apply(data_250, 2, function(x) sum(is.na(x))))
+
+```
+
+```{r}
+dfdata_250 <- data.frame(data_250)
+
+fctdelt_250 <- as.factor(data_250$delito)
+
+fctnom_250 <- as.factor(data_250$nombre)
+
+
+```
+
+```{r}
+table2 <- table(data_250$delito, data_250$nombre, data_250$Join_Count)
+table2
+
+```
+
+```{r}
+library(lattice)
+densityplot(~ fctnom_250, group = fctdelt_250, data = data_250, auto.key = TRUE)
+
+ggplot(data_250) + geom_density(aes(x = fctnom_250))
+ggplot(data_250) + geom_density(aes(x = data_250$Join_Count))
+ggplot(data_250) + geom_density(aes(x = fctdelt_250))
+
+
+```
+
+```{r}
+densityplot(~ fctnom_250, group = fctdelt_250, data = data_250, auto.key = TRUE)
+
+```
