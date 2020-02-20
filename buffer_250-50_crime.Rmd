@@ -3,8 +3,8 @@ title: "crimenes_250_50m"
 author: "Laura.w"
 date: "2/20/2020"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
