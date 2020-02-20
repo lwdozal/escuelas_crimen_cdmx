@@ -142,6 +142,6 @@ ggplot(data_250) + geom_density(aes(x = fctdelt_250))
 ```
 
 ```{r}
-densityplot(~ fctnom_250, group = fctdelt_250, data = data_250, auto.key = TRUE)
+ggplot(data_250) + geom_density(aes(x = fctdelt_250)) + facet_wrap(~fctnom_250)
 
-```
+ ```
