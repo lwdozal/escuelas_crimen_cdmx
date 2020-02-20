@@ -17,6 +17,7 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
 ```
 ```{r}
 library(readxl)
+
 library(readr)
 
 data_250 <- read_xlsx('C://Users//LW//Box//Mexico City 2020//data//buffer_250_crime1_TableToExcel.xlsx')
