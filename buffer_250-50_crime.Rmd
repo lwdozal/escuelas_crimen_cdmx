@@ -3,12 +3,12 @@ title: "crimenes_250_50m"
 author: "Laura.w"
 date: "2/20/2020"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
 ```
 
 ```{r}
@@ -76,13 +76,11 @@ boxplot(data_250$Join_Count)
 
 ```
 
-```{r}
-
-
-```
 
 ```{r}
 ggplot(data_250, aes(x=delito, y=Join_Count)) + geom_point()+ggtitle("Relationship crime and count")
+
+
 
 
 ```
@@ -96,21 +94,32 @@ barplot(freq, main="Frequency of crimes within a 50m radius")
 
 
 ```{r}
-library(readxl)
-table(data_250$Join_Count, data_250$nombre)
+#table(data_250$Join_Count, data_250$nombre)
+school_freq_in_join_count <- table(data_250$nombre)
+hist(school_freq_in_join_count)
 
 ```
 
 ```{r}
-library(dplyr)
 
-missing.value.rows <- filter(data_250, !complete.cases(data_250)) 
-missing.value.rows
+ggplot(data_250, aes(x=nombre, y=Join_Count)) + geom_point()+ggtitle("Relationship school and count")
+```
+
+```{r}
+
+ggplot(data_250, aes(x=nombre, y=delito)) + geom_point()+ggtitle("Relationship school and crime")
+
+```
+
+```{r}
+
+#missing.value.rows <- filter(data_250, !complete.cases(data_250)) 
+#missing.value.rows
 
 
-apply(data_250, 1, function(x) sum(is.na(x)))
+#apply(data_250, 1, function(x) sum(is.na(x)))
 
-sort(apply(data_250, 2, function(x) sum(is.na(x))))
+#sort(apply(data_250, 2, function(x) sum(is.na(x))))
 
 ```
 
@@ -122,11 +131,12 @@ fctdelt_250 <- as.factor(data_250$delito)
 fctnom_250 <- as.factor(data_250$nombre)
 
 
+
 ```
 
 ```{r}
-table2 <- table(data_250$delito, data_250$nombre, data_250$Join_Count)
-table2
+#table2 <- table(data_250$delito, data_250$nombre, data_250$Join_Count)
+#table2
 
 ```
 
@@ -142,6 +152,6 @@ ggplot(data_250) + geom_density(aes(x = fctdelt_250))
 ```
 
 ```{r}
-ggplot(data_250) + geom_density(aes(x = fctdelt_250)) + facet_wrap(~fctnom_250)
+#ggplot(data_250) + geom_density(aes(x = fctdelt_250)) + facet_wrap(~fctnom_250)
 
  ```
