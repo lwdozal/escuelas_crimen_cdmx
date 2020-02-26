@@ -1,0 +1,76 @@
+---
+title: "Comparisons"
+author: "Laura.w"
+date: "2/25/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(readxl)
+
+library(readr)
+
+data_250 <- read_xlsx('C://Users//LW//Box//Mexico City 2020//data//buffer_250_crime1_TableToExcel.xlsx')
+
+data_150 <- read_xlsx('C://Users//LW//Box//Mexico City 2020//data//buffer_150_crime2.xlsx')
+
+data_100 <- read_xlsx('C://Users//LW//Box//Mexico City 2020//data//buffer_100_crime2_TableToExcel.xlsx')
+
+data_250
+
+data_150
+
+data_100
+
+```
+
+
+```{r}
+library(ggplot2)
+
+
+ggplot(data_250) +
+    geom_histogram(aes(x = data_250$Join_Count),
+                binwidth = 25, fill = "blue", color = "black") + theme_minimal(14) + scale_x_continuous(breaks=seq(0,800,100)) + labs(x = "Crime within a 250m radius", y = "Schools")
+
+summary(data_250$Join_Count)
+
+
+```
+
+```{r}
+library(ggplot2)
+
+
+ggplot(data_150) +
+    geom_histogram(aes(x = data_150$Join_Count),
+                binwidth = 20, fill = "orange", color = "black") + theme_minimal(14) + scale_x_continuous(breaks=seq(0,500,50)) + labs(x = "Crime within a 150m radius", y = "Schools")
+
+summary(data_150$Join_Count)
+
+```
+
+```{r}
+ggplot(data_100) +
+    geom_histogram(aes(x = data_100$Join_Count),
+                binwidth = 10, fill = "green", color = "black") + theme_minimal(14) + scale_x_continuous(breaks=seq(0,300,20)) + labs(x = "Crime within a 100m radius", y = "Schools")
+
+summary(data_100$Join_Count)
+
+```
+
+The overall number of crime lowers as the radius around the school lowers. 
+For example, in a radius of 100m, the maximum number of crimes commited was 232 with an average of 11.28 crimes in the region overall. 
+
+For a radius of 150m, the maximum number of crimes commited was 468 with an average of 26 crimes in the region overall.
+
+Lastly, for a radius of 250m, the maximum number of crimes commited was 691 with an average of 68 crimes throughout the region.
+
+Next steps:
+Locate regions (schools) with top crime counts and review from there.
+
