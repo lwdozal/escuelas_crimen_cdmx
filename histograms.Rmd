@@ -1,12 +1,14 @@
 ---
-title: "Comparisons"
+title: "Region Comparisons"
 author: "Laura.w"
 date: "2/25/2020"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
 ```
 
 
@@ -15,24 +17,20 @@ library(readxl)
 
 library(readr)
 
+
 data_250 <- read_xlsx('C://Users//LW//Box//Mexico City 2020//data//buffer_250_crime1_TableToExcel.xlsx')
 
 data_150 <- read_xlsx('C://Users//LW//Box//Mexico City 2020//data//buffer_150_crime2.xlsx')
 
 data_100 <- read_xlsx('C://Users//LW//Box//Mexico City 2020//data//buffer_100_crime2_TableToExcel.xlsx')
 
-data_250
-
-data_150
-
-data_100
 
 ```
 
 
 ```{r}
-library(ggplot2)
 
+library(ggplot2)
 
 ggplot(data_250) +
     geom_histogram(aes(x = data_250$Join_Count),
@@ -44,7 +42,6 @@ summary(data_250$Join_Count)
 ```
 
 ```{r}
-library(ggplot2)
 
 
 ggplot(data_150) +
