@@ -32,6 +32,22 @@ max(bc50$Join_Count)
 
 min(bc50$Join_Count)
 
+```{r}
+
+
+df <- data.frame(data_250)
+
+df %>% top_n(n()*.1)
+
+df %>% top_frac(.1)
+
+
+crimenestop10 <- data.frame(data_250)
+
+quantile(data_250$Join_Count, c(.10))
+
+```
+
 IQR(bc50$Join_Count)
 
 #inter-quartile range
