@@ -48,6 +48,24 @@ quantile(data_250$Join_Count, c(.10))
 
 ```
 
+```{r}
+
+suppressPackageStartupMessages(install.packages('writexl'))
+
+library('readxl')
+library('writexl')
+
+write_xlsx(topdies, "C://Users//LW//Box//Mexico City 2020//data//toptenpercent.xlsx")
+
+out <- read_xlsx("C://Users//LW//Box//Mexico City 2020//data//toptenpercent.xlsx")
+
+```
+
+gghistogram(topdies$Join_Count, 
+            xlab="Top 10% Crime Within a 250m Radius",
+            ylab= "Number of Schools",
+            bandwidth = 75)
+
 IQR(bc50$Join_Count)
 
 #inter-quartile range
