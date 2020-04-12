@@ -1,0 +1,103 @@
+---
+title: "conavel_review"
+author: "Laura.w"
+date: "4/12/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Reviewing Conavel .shp files
+
+I found these files through Conavel's search withoug descriptions. They won't open in ArcGis (potential language barrier), so I thought I'd take a look here.
+
+There still isn't much to go by other than the acromyms, A, E, L, M, SIA, SIL, SIP, and T. I couldn't find much help on Conavel's website, or maybe I didn't exactly know where to look. Some look like transportation routes and cites for public/social resources.
+
+Next steps are to look through other data, cdmx.gob & inegi, to see if I can connect the dots. 
+ - Most of the information is taken from INEGI so that's a good sign.
+ - Most of the data is from 10 years ago, so might not be what we're looking for.
+
+```{r}
+library(sf)
+library(ggplot2)
+
+```
+
+
+```{r}
+conavelA <- st_read("C://Users//LW//Desktop//conavel1//080370001A.shp")
+conavelA
+```
+
+```{r}
+ggplot() + geom_sf(data=conavelA) + ggtitle("conavelA") + coord_sf()
+
+```
+
+```{r}
+conavelCA <- st_read("C://Users//LW//Desktop//conavel1//080370001CA.shp")
+conavelCA
+ggplot() + geom_sf(data=conavelCA) + ggtitle("conavelCA") + coord_sf()
+
+```
+
+
+```{r}
+conavelE <- st_read("C://Users//LW//Desktop//conavel1//080370001E.shp")
+conavelCA
+
+ggplot() + geom_sf(data=conavelE) + ggtitle("conavelE") + coord_sf()
+
+```
+
+
+```{r}
+conavelL <- st_read("C://Users//LW//Desktop//conavel1//080370001L.shp")
+conavelL
+ggplot() + geom_sf(data=conavelL) + ggtitle("conavelL") + coord_sf()
+
+```
+
+```{r}
+conavelM <- st_read("C://Users//LW//Desktop//conavel1//080370001M.shp")
+conavelM
+ggplot() + geom_sf(data=conavelM) + ggtitle("conavelM") + coord_sf()
+
+```
+
+```{r}
+conavelSIA <- st_read("C://Users//LW//Desktop//conavel1//080370001SIA.shp")
+conavelM
+ggplot() + geom_sf(data=conavelSIA) + ggtitle("conavelSIA") + coord_sf()
+
+```
+
+```{r}
+conavelSIP <- st_read("C://Users//LW//Desktop//conavel1//080370001SIP.shp")
+conavelSIP
+ggplot() + geom_sf(data=conavelSIP) + ggtitle("conavelSIP") + coord_sf()
+
+```
+
+```{r}
+conavelSIL <- st_read("C://Users//LW//Desktop//conavel1//080370001SIL.shp")
+conavelSIL
+ggplot() + geom_sf(data=conavelSIL) + ggtitle("conavelSIL") + coord_sf()
+
+```
+
+```{r}
+conavelT <- st_read("C://Users//LW//Desktop//conavel1//080370001T.shp")
+conavelT
+ggplot() + geom_sf(data=conavelT) + ggtitle("conavelT") + coord_sf()
+
+```
+
+```{r}
+conavel2A <- st_read("C://Users//LW//Desktop//conavel2//020010001A.shp")
+conavel2A
+ggplot() + geom_sf(data=conavel2A) + ggtitle("conavel2A") + coord_sf()
+
+```
